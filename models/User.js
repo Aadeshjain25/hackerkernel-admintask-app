@@ -1,0 +1,26 @@
+const { Model } = require('objection');
+
+class User extends Model {
+    static get tableName() {
+        return 'users';
+    }
+
+    static get idColumn() {
+        return 'id';
+    }
+
+    static get relationMappings() {
+        const Task = require('./Task');
+        return {
+            tasks: {
+                relation: Model.HasManyRelation,
+                modelClass: Task,
+                join: {
+                    from: 'users.id',
+                    to: 'tasks.user_id'
+                }
+            }
+        }
+    }
+}
+module.exports = User;

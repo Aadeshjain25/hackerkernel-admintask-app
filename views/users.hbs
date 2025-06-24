@@ -1,0 +1,19 @@
+<h1>Users</h1>
+<form action = '/users/add' method = "POST" onsubmit="return validateForm()">
+<input type = "text" name = "name" placeholder = "Name" required> <br>
+<input type = "email" name = "email" placeholder= "Email" required> <br>
+<input type = "tel" name =  "mobile" placeholder= "Mobile" required> <br>
+<button type = "submit">Add User</button>
+</form>
+
+<h2>All Users</h2>
+<ul>
+    {{#each users}}
+    <li>{{this.name}} - {{this.email}} - {{this.mobile}} </li>
+    <ul>
+        {{#each this.tasks}}
+        <li>{{this.task_name}} ({{this.task_status}})</li>
+        {{/each}}
+    </ul>
+    {{/each}}
+</ul>

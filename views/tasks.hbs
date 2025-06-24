@@ -1,0 +1,21 @@
+<h1>Add Task</h1>
+<form action = "/tasks/add" method = "POST">
+ <label>User : </label>
+ <select name = "user_id" required>
+    {{#each users}}
+    <option value =  "{{this.id}}">{{this.name}}</option>
+    {{/each}}
+ </select><br>
+
+ <input type = "text" name = "task_name" placeholder="Task Name" required><br>
+ <select name = "task_status" required>
+    <option value="Pending">Pending</option>
+    <option value ="Done"> Done</option>
+ </select><br>
+
+ <button type ="submit">Add Task</button>
+</form>
+<br>
+<a href ="/tasks/export">Exports tasks & Users to excel</a>
+
+
